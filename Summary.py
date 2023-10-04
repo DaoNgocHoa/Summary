@@ -6,8 +6,8 @@ from summarizer import Summarizer
 def Return_summary():
 
     # Tải danh sách từ ngừng tiếng Việt từ một URL
-    stopwords_file_path = "E:\\pythonProject\\Stopwords.txt"
-    file_path = "E:\\pythonProject\\Directory\\J.txt"
+    stopwords_file_path = "E:/pythonProject/Summary/Stopwords.txt"
+    file_path = "E:/pythonProject/Directory/J.txt"
 
     # Đọc tệp từ điển stop words và tạo danh sách
     with open(stopwords_file_path, 'r', encoding='utf-8') as file:

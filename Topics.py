@@ -4,7 +4,7 @@ import re
 
 # Văn bản đầu vào
 def return_topic():
-    file_path = "E:\\pythonProject\\Directory\\J.txt"
+    file_path = "/pythonProject/Directory/J.txt"
     with open(file_path, "r", encoding="utf-8") as file:
         content = file.read()
         #print("Nội dung tệp văn bản:")
@@ -15,7 +15,7 @@ def return_topic():
 
     # Tải danh sách từ dừng tiếng Việt từ một nguồn nào đó, ví dụ từ một tệp tin
     stopwords = set()
-    with open("E:\\pythonProject\\Stopwords.txt", "r", encoding="utf-8") as file:
+    with open("Stopwords.txt", "r", encoding="utf-8") as file:
         stopwords.update(file.read().splitlines())
 
     # Khởi tạo danh sách để lưu trữ từ khóa
