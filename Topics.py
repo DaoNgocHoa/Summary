@@ -2,14 +2,9 @@ from collections import Counter
 import underthesea
 import re
 
-# Văn bản đầu vào
-def return_topic():
-    file_path = "/pythonProject/Directory/J.txt"
-    with open(file_path, "r", encoding="utf-8") as file:
-        content = file.read()
-        #print("Nội dung tệp văn bản:")
-        #print(content)
 
+# Văn bản đầu vào
+def return_topic(content):
     # Phân đoạn văn bản thành các câu
     sentences = underthesea.sent_tokenize(content)
 
@@ -48,19 +43,9 @@ def return_topic():
     for _, count in sorted_keywords:
         actual_word_count += count
 
-    # In ra số từ
-    print(f"Số từ trong văn bản là: {actual_word_count}")
-
     top_keywords = sorted_keywords[:15]
 
-    to_dict = dict((keyword, count / actual_word_count) for keyword, count in top_keywords)
-
-    # In ra danh sách các từ khóa
-    print("Danh sách các từ khóa:")
-    for keyword, count in top_keywords:  # Lấy 10 từ khóa xuất hiện nhiều nhất
-        print(f"{keyword}: {count}")
-
-    print("Từ khóa dạng dict:")
-    print(to_dict)
+    to_dict = dict((keyword.lower().strip(), count / actual_word_count)
+                   for keyword, count in top_keywords if not keyword.isnumeric())
 
     return to_dict
