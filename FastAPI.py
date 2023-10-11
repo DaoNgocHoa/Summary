@@ -69,6 +69,14 @@ PORT = 8001
 # Mở thực thi ứng dụng FastAPI
 if __name__ == "__main__":
     import uvicorn
+    import multiprocessing
 
+    worker_count = os.environ.get("UVICORN_WORKER_COUNT")
+    workers = int(multiprocessing.cpu_count() / 2)
+    if worker_count is not None:
+        workers = int(worker_count)
+    if workers < 1:
+        workers = 1
     print(f"Allowing inbound connection from: {ALLOWED}")
-    uvicorn.run(app, host="0.0.0.0", port=PORT)
+    print(f"Uvicorn worker count: {workers}")
+    uvicorn.run("FastAPI:app", host="0.0.0.0", port=PORT, workers=workers)
